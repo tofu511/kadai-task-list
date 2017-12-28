@@ -1,3 +1,6 @@
+import com.typesafe.config.{Config, ConfigFactory}
+import scala.collection.JavaConverters._
+
 name := """kadai-task-list"""
 
 organization := "com.example"
@@ -5,6 +8,19 @@ organization := "com.example"
 version := "1.0.0-SNAPSHOT"
 
 lazy val root = (project in file(".")).enablePlugins(PlayScala)
+
+lazy val envConfig = settingKey[Config]("env-config")
+
+envConfig := {
+  val env = sys.props.getOrElse("env", "dev")
+  ConfigFactory.parseFile(file("env") / (env + ".conf"))
+}
+
+flywayLocations := envConfig.value.getStringList("flywayLocations").asScala
+flywayDriver := envConfig.value.getString("jdbcDriver")
+flywayUrl := envConfig.value.getString("jdbcUrl")
+flywayUser := envConfig.value.getString("jdbcUserName")
+flywayPassword := envConfig.value.getString("jdbcPassword")
 
 scalaVersion := "2.11.11"
 
