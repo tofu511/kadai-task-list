@@ -1,5 +1,3 @@
 package forms
 
-class TaskForm {
-
-}
+case class TaskForm(id: Option[Long], content: String)
