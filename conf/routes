@@ -9,18 +9,18 @@ GET     /                           controllers.Default.redirect(to = "/tasks")
 # タスク一覧画面の表示
 GET     /tasks                      controllers.GetTasksController.index
 # タスク詳細画面の表示
-# GET     /tasks/:id                  controllers.GetTaskController.index(id: Long)
+GET     /tasks/:id/detail           controllers.GetTaskController.index(id: Long)
 # タスク作成画面の表示
-# GET     /tasks/create               controllers.CreateTaskController.index
+GET     /tasks/create               controllers.CreateTaskController.index
 # タスク編集画面の表示
-# GET     /tasks/:id/update           controllers.UpdateTaskController.index(id: Long)
+GET     /tasks/:id/update           controllers.UpdateTaskController.index(id: Long)
 
 # タスクの作成
-# POST    /tasks/create               controllers.CreateTaskController.create
+POST    /tasks/create               controllers.CreateTaskController.create
 # タスクの編集
-# POST    /tasks/update               controllers.UpdateTaskController.update
+POST    /tasks/update               controllers.UpdateTaskController.update
 # タスクの削除
-# POST    /tasks/:id/delete           controllers.DeleteTaskController.delete(id: Long)
+POST    /tasks/:id/delete           controllers.DeleteTaskController.delete(id: Long)
 
 
 # Map static resources from the /public folder to the /assets URL path

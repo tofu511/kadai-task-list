@@ -4,6 +4,7 @@ import java.time.ZonedDateTime
 
 import scalikejdbc._
 import skinny.orm._
+import jsr310._
 
 /**
   * Task
@@ -20,7 +21,7 @@ object Task extends SkinnyCRUDMapper[Task] {
     autoConstruct(rs, n)
 
   private def toNamedValues(record: Task): Seq[(Symbol, Any)] = Seq(
-    'content -> record.content,
+    'content  -> record.content,
     'createAt -> record.createAt,
     'updateAt -> record.updateAt
   )
