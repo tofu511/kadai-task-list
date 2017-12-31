@@ -13,12 +13,12 @@ import play.filters.csrf.CSRF._
 import play.filters.csrf._
 import scalikejdbc.PlayModule
 import play.api.inject.bind
-import services.{ TaskService, MockTaskService}
+import services.{ MockTaskService, TaskService }
 
 import scala.reflect.ClassTag
 
 abstract class PlayFunSpec
-  extends FunSpec
+    extends FunSpec
     with MustMatchers
     with OptionValues
     with WsScalaTestClient

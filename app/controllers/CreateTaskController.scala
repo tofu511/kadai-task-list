@@ -6,10 +6,10 @@ import javax.inject.{ Inject, Singleton }
 import models.Task
 import play.api.i18n.{ I18nSupport, Messages, MessagesApi }
 import play.api.mvc.{ Action, AnyContent, Controller }
-import scalikejdbc.AutoSession
+import services.TaskService
 
 @Singleton
-class CreateTaskController @Inject()(val messagesApi: MessagesApi)
+class CreateTaskController @Inject()(val messagesApi: MessagesApi, taskService: TaskService)
     extends Controller
     with I18nSupport
     with TaskControllerSupport {
@@ -23,10 +23,9 @@ class CreateTaskController @Inject()(val messagesApi: MessagesApi)
       .bindFromRequest()
       .fold(
         formWithErrors => BadRequest(views.html.create(formWithErrors)), { model =>
-          implicit val session = AutoSession
-          val now              = ZonedDateTime.now()
-          val task             = Task(None, Some(model.status), model.content, now, now)
-          val result           = Task.create(task)
+          val now    = ZonedDateTime.now()
+          val task   = Task(None, Some(model.status), model.content, now, now)
+          val result = taskService.create(task)
           if (result > 0)
             Redirect(routes.GetTasksController.index())
           else

@@ -1,5 +1,5 @@
 import com.google.inject.AbstractModule
-import services.{TaskService, TaskServiceImpl}
+import services.{ TaskService, TaskServiceImpl }
 
 class AppModule extends AbstractModule {
 
