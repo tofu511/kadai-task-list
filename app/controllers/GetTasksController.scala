@@ -1,15 +1,18 @@
 package controllers
 
 import javax.inject.{ Inject, Singleton }
+
 import play.api.mvc._
 import play.api.i18n.{ I18nSupport, MessagesApi }
-import models.Task
+import services.TaskService
 
 @Singleton
-class GetTasksController @Inject()(val messagesApi: MessagesApi) extends Controller with I18nSupport {
+class GetTasksController @Inject()(val messagesApi: MessagesApi, taskService: TaskService)
+    extends Controller
+    with I18nSupport {
 
   def index: Action[AnyContent] = Action { implicit request =>
-    val result = Task.findAll()
+    val result = taskService.findAll
     Ok(views.html.index(result))
   }
 }

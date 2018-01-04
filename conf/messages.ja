@@ -1,11 +1,17 @@
 Id=Id
 Title=タイトル
 Task=タスク
+Status=ステータス
 CreateTask=タスク新規作成
 UpdateTask=タスク編集
 DeleteTask=タスク削除
 GetTasks=タスク一覧
 GetTask=タスク詳細
+
+N=未着手
+I=進行中
+S=中断中
+D=完了
 
 CreateTaskError=タスク作成に失敗しました。
 UpdateTaskError=タスク更新に失敗しました。
