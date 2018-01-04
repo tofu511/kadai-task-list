@@ -1,5 +1,3 @@
 package models
 
-class TaskSpec extends ModelSpec {
-
-}
+class TaskSpec extends ModelSpec {}

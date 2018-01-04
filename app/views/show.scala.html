@@ -11,7 +11,11 @@
                     <td>@task.id.get</td>
                 </tr>
                 <tr>
-                    <th>Task</th>
+                    <th>@Messages("Status")</th>
+                    <td>@Messages(task.status.getOrElse(""))</td>
+                </tr>
+                <tr>
+                    <th>@Messages("Task")</th>
                     <td>@task.content</td>
                 </tr>
             </tbody>
