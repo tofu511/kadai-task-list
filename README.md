@@ -1,4 +1,4 @@
-# kadai-task-list
+# task-list
 
 ## 概要
 ScalaとPlayフレームワークで作ったタスク管理アプリケーションです。
